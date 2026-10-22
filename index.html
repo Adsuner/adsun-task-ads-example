@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script src="https://adsun.io/adsun.min.js"></script>
+  <title>Adsun example</title>
+  <style>body{font-family:system-ui;padding:24px;max-width:420px;margin:auto}button{padding:14px 18px;font-size:16px;border-radius:12px;border:0;background:#2481cc;color:#fff;width:100%}</style>
+</head>
+<body>
+  <h1>Earn coins</h1>
+  <adsun-task id="task" data-block-id="YOUR_BLOCK_ID" data-debug="true" data-debug-console="true">
+    <span slot="reward">+100 coins</span>
+    <button slot="button">Go</button>
+    <button slot="claim">Claim reward</button>
+    <span slot="done">Completed</span>
+  </adsun-task>
+  <p id="msg"></p>
+<script>
+  const t = document.getElementById("task"), msg = document.getElementById("msg");
+  t.addEventListener("reward", () => msg.textContent = "Reward granted!");
+  t.addEventListener("onBannerNotFound", () => msg.textContent = "No task right now.");
+  t.addEventListener("onFastReturn", () => msg.textContent = "Came back too fast — no reward.");
+</script>
+</body>
+</html>
